@@ -13,7 +13,7 @@ AS AN employee with a busy schedule
 I WANT to add important events to a daily planner
 SO THAT I can manage my time effectively
 ```
-
+ 
 ## Acceptance Criteria
 
 The app should:
@@ -84,4 +84,4 @@ You are required to submit the following for review:
 * The URL of the GitHub repository, with a unique name and a README describing the project
 
 ---
-© 2022 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.

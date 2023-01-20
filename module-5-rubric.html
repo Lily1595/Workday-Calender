@@ -9,7 +9,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.full.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.css" rel="stylesheet" />
-  <title>Module 7 Third-Party APIs Challenge Rubric</title>
+  <title>Module 5 JavaScript Challenge Rubric</title>
   <style>
     *,
     *::before,
@@ -523,7 +523,7 @@
         "use strict";
 
         function Model() {
-          this.title = `Module 7 Third-Party APIs Challenge Rubric (Coding)`;
+          this.title = `Unit 3 JavaScript HW Rubric (Coding)`;
           this.categories = [
             {
               title: "Deployment",
@@ -567,65 +567,70 @@
                 "Keep your browser console open and watch out for errors from this point forward.",
               score: 0,
               questions: [
-              {
-                  title:
-                    "The application displays timeblocks for standard business hours (9 a.m. to 5 p.m.)",
-                  score: 8,
-                  type: "true false",
-                  message:
-                    "Application doesn't display timeblocks for all standard business hours",
-                  status: false
-                },
                 {
-                  title:
-                    "Each timeblock contains an input field and save button",
-                  score: 8,
-                  type: "true false",
-                  message:
-                    "Timeblocks don't contain an input field and save button",
-                  status: false
-                },
-                {
-                  title:
-                    "Clicking a time block's save button saves the input text to local storage, allowing the text to persist when the application is refreshed",
-                  score: 8,
-                  type: "true false",
-                  message:
-                    "Clicking a time block's save button doesn't save the input text to local storage",
-                  status: false
-                },
-                {
-                  title:
-                    "The current day is displayed at the top of the calendar",
-                  score: 8,
-                  type: "true false",
-                  message:
-                    "The current day isn't displayed at the top of the calendar",
-                  status: false
-                },
-                {
-                  title: "Each timeblock is color coded to indicate whether it is in a past, present, or future hour",
+                  title: "Application prompts user for password length and if they would like to include lowercased, uppercased, numeric, and special characters",
                   score: 8,
                   type: "likert",
                   options: [
                     {
-                      message: "Time blocks aren't color coded to indicate whether they are in the past, present, or future",
+                      message: "Application doesn't prompt for any password options",
                       score: 0
                     },
                     {
-                      message: "Time blocks are only color coded to indicate whether they are in 1 of the following: the past, present, and future",
-                      score: 3
+                      message: "Application prompts user for 1 of the 5 password options: password length, lowercased characters, uppercased characters, numeric characters, and special characters",
+                      score: 2
                     },
                     {
-                      message: "Time blocks are only color coded to indicate whether they are in 2 of the following: the past, present, and future",
+                      message: "Application prompts user for 2 of the 5 password options: password length, lowercased characters, uppercased characters, numeric characters, and special characters",
+                      score: 4
+                    },
+                    {
+                      message: "Application prompts user for 3 of the 5 password options: password length, lowercased characters, uppercased characters, numeric characters, and special characters",
                       score: 6
                     },
                     {
-                      message: "Each timeblock is color coded to indicate whether it is in a past, present, or future hour",
+                      message: "Application prompts user for 4 of the 5 password options: password length, lowercased characters, uppercased characters, numeric characters, and special characters",
+                      score: 7
+                    },
+                    {
+                      message: "Application prompts user for password length and if they would like to include lowercased, uppercased, numeric, and special characters",
                       score: 8
                     }
                   ],
                   message: "",
+                  status: false
+                },
+                {
+                  title: "Application generates valid password based on provided options",
+                  score: 8,
+                  type: "true false",
+                  message:
+                    "Application doesn't generate valid password based on password options",
+                  status: false
+                },
+                {
+                  title:
+                    "Application requires minimum password length of 10 characters",
+                  score: 8,
+                  type: "true false",
+                  message:
+                    "Application doesn't require minimum password length of 10 characters",
+                  status: false
+                },
+                {
+                  title:
+                    "Application requires maximum password length of 64 characters",
+                  score: 8,
+                  type: "true false",
+                  message:
+                    "Application doesn't require maximum password length of 64 characters",
+                  status: false
+                },
+                {
+                  title: "Application is free of console errors",
+                  score: 8,
+                  type: "true false",
+                  message: "Application has errors in the console",
                   status: false
                 }
               ]
