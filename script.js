@@ -25,12 +25,24 @@ $(document).ready(function(){
     }
     });
 
-//IF ELSE STATEMENTS TO COMPARE THE VALUE OF EACH ROW TO THE CURRENT TIME SO COLOUR CODING CAN COMMENCE 
+if (rowValues < timeNow) {
+    $(this).removeClass("future");
+    $(this).removeClass("present");
+    $(this).addClass("past");
+}
+else if (rowValues === timeNow) {
+    $(this).removeClass("past");
+    $(this).removeClass("future");
+    $(this).addClass("present");
+}
+else {
+    $(this).removeClass("present");
+    $(this).removeClass("past");
+    $(this).addClass("future");
+}
 
+//YOU NEED TO PRACTICE SCOPING!! 
 
-
-
-    
 //FUNCTION TO GET CURRENT TIME - this shows the hour in terms of which hour in 24 hour clock time, so 8pm is hour 20 
 //function timeTracker() {
     let timeNow = moment().hour();
