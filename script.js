@@ -1,6 +1,9 @@
+ //CURRENT BUGS: 
+ // - ALL TIME BLOCKS ARE DISPLAYING AS GREEN BUT I KNOW COMPARISON STATEMENTS ARE WORKING FROM THE CONSOLE 
+ // - WHEN USER WRITES IN ONE TEXT BOX, IT CHANGES ALL THE BOXES TO SAY THE SAME THING
+ 
  //DISPLAY CURRENT DATE
  $("#currentDay").text(moment().format('ddd MMM Do, YYYY HH:mm'));
-
 
 //FUNCTION FOR WHEN USER CLICKS SAVE BUTTON 
 $('.saveBtn').on('click', function() {
@@ -13,7 +16,11 @@ $(document).ready(function() {
     $("textarea").val(storedValue);
 });
 
-//give each row/ timeblock a value and then do if else statements
+//GET CURRENT TIME
+let timeNow = moment().hour();
+console.log(timeNow);
+
+//FUNCTION TO GIVE EACH ROW A VALUE, COMPARE VALUE WITH CURRENT TIME, ADD OR REMOVE CSS CLASSES ACCORDINGLY  
 
 $(document).ready(function(){
     let rows = $(".row");
@@ -41,11 +48,6 @@ $(document).ready(function(){
     }
     }
     });
-
-//GET CURRENT TIME - this shows the hour in terms of which hour in 24 hour clock time, so 8pm is hour 20 
-    let timeNow = moment().hour();
-    console.log(timeNow);
-
 
 //PSEUDOCODE:
 // when you type text in the middle column, the value of that text needs to be saved to local storage
