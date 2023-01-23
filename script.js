@@ -13,8 +13,7 @@ $(document).ready(function() {
     $("textarea").val(storedValue);
 });
 
-//give each row/ timeblock a value: 
-//SCOPE OF THIS IS WRONG, FIND A WAY TO GET THE PROPER SCOPING ISSUES RIGHT 
+//give each row/ timeblock a value and then do if else statements
 
 $(document).ready(function(){
     let rows = $(".row");
@@ -22,32 +21,29 @@ $(document).ready(function(){
     $(rows[i]).val(i + 9);
     let rowValues = $(rows[i]).val();
     console.log(rowValues);
+    if (rowValues < timeNow) {
+        console.log("in the past");
+        $('textarea').removeClass("future");
+        $('textarea').removeClass("present");
+        $('textarea').addClass("past");
+    }
+    else if (rowValues == timeNow) {
+        console.log("in the present");
+        $('textarea').removeClass("past");
+        $('textarea').removeClass("future");
+        $('textarea').addClass("present");
+    }
+    else {
+        console.log("in the future");
+        $('textarea').removeClass("present");
+        $('textarea').removeClass("past");
+        $('textarea').addClass("future");
+    }
     }
     });
 
-if (rowValues < timeNow) {
-    $(this).removeClass("future");
-    $(this).removeClass("present");
-    $(this).addClass("past");
-}
-else if (rowValues === timeNow) {
-    $(this).removeClass("past");
-    $(this).removeClass("future");
-    $(this).addClass("present");
-}
-else {
-    $(this).removeClass("present");
-    $(this).removeClass("past");
-    $(this).addClass("future");
-}
-
-//YOU NEED TO PRACTICE SCOPING!! 
-
-//FUNCTION TO GET CURRENT TIME - this shows the hour in terms of which hour in 24 hour clock time, so 8pm is hour 20 
-//function timeTracker() {
+//GET CURRENT TIME - this shows the hour in terms of which hour in 24 hour clock time, so 8pm is hour 20 
     let timeNow = moment().hour();
-    //}
-    //timeTracker();
     console.log(timeNow);
 
 
@@ -55,6 +51,6 @@ else {
 // when you type text in the middle column, the value of that text needs to be saved to local storage
 // the value of what is written in the text book should only saved to local storage upon an event of clicking the save button, if user hasn't pressed save then their written content won't be saved when they refresh the page DONE 
 // Color-code each timeblock based on past, present, and future when the timeblock is viewed: use the time now function to get the current time, if the current time is in the future then background is set to green, if its current, leave it blank, if its in the past, then set the background to red. 
-// you need to give each row a value, and then do if statements that assess the 'timenow' against the value of the the row... (?)
+// you need to give each row a value, and then do if statements that assess the 'timenow' against the value of the the row
 
 
