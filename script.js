@@ -1,17 +1,18 @@
- //CURRENT BUGS: 
- // - ALL TIME BLOCKS ARE DISPLAYING AS GREEN BUT I KNOW COMPARISON STATEMENTS ARE WORKING FROM THE CONSOLE 
- // - WHEN USER WRITES IN ONE TEXT BOX, IT CHANGES ALL THE BOXES TO SAY THE SAME THING
- 
- //DISPLAY CURRENT DATE
- $("#currentDay").text(moment().format('ddd MMM Do, YYYY HH:mm'));
+//CURRENT BUGS: 
+// - ALL TIME BLOCKS ARE DISPLAYING AS GREEN BUT I KNOW COMPARISON STATEMENTS ARE WORKING FROM THE CONSOLE 
+// - WHEN USER WRITES IN ONE TEXT BOX, IT CHANGES ALL THE BOXES TO SAY THE SAME THING
+// - REVISE SCOPE AND DATA ATTRIBUTES 
+
+//DISPLAY CURRENT DATE
+$("#currentDay").text(moment().format('ddd MMM Do, YYYY HH:mm'));
 
 //FUNCTION FOR WHEN USER CLICKS SAVE BUTTON 
-$('.saveBtn').on('click', function() {
+$('.saveBtn').on('click', function () {
     let textareaValue = $('.textarea').val();
     localStorage.setItem('textareaValue', textareaValue);
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
     let storedValue = localStorage.getItem("textareaValue");
     $("textarea").val(storedValue);
 });
@@ -22,32 +23,35 @@ console.log(timeNow);
 
 //FUNCTION TO GIVE EACH ROW A VALUE, COMPARE VALUE WITH CURRENT TIME, ADD OR REMOVE CSS CLASSES ACCORDINGLY  
 
-$(document).ready(function(){
+$(document).ready(function () {
     let rows = $(".row");
     for (let i = 0; i < rows.length; i++) {
-    $(rows[i]).val(i + 9);
-    let rowValues = $(rows[i]).val();
-    console.log(rowValues);
-    if (rowValues < timeNow) {
-        console.log("in the past");
-        $('textarea').removeClass("future");
-        $('textarea').removeClass("present");
-        $('textarea').addClass("past");
+        $(rows[i]).val(i + 9);
+        let rowValues = $(rows[i]).val();
+        console.log(rowValues);
+        if (rowValues < timeNow) {
+            console.log("in the past");
+            //$('textarea').removeClass("future");
+            //$('textarea').removeClass("present");
+            //$('textarea').addClass("past");
+            $(rows[i]).find("textarea").addClass("past");
+        }
+        else if (rowValues == timeNow) {
+            console.log("in the present");
+            //$('textarea').removeClass("past");
+            //$('textarea').removeClass("future");
+            //$('textarea').addClass("present");
+            $(rows[i]).find("textarea").addClass("present");
+        }
+        else {
+            console.log("in the future");
+            //$('textarea').removeClass("present");
+            //$('textarea').removeClass("past");
+            //$('textarea').addClass("future");
+            $(rows[i]).find("textarea").addClass("future");
+        }
     }
-    else if (rowValues == timeNow) {
-        console.log("in the present");
-        $('textarea').removeClass("past");
-        $('textarea').removeClass("future");
-        $('textarea').addClass("present");
-    }
-    else {
-        console.log("in the future");
-        $('textarea').removeClass("present");
-        $('textarea').removeClass("past");
-        $('textarea').addClass("future");
-    }
-    }
-    });
+});
 
 //PSEUDOCODE:
 // when you type text in the middle column, the value of that text needs to be saved to local storage
