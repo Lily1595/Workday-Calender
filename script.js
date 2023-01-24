@@ -1,21 +1,31 @@
-//CURRENT BUGS: 
-// - ALL TIME BLOCKS ARE DISPLAYING AS GREEN BUT I KNOW COMPARISON STATEMENTS ARE WORKING FROM THE CONSOLE 
+//CURRENT BUGS:
 // - WHEN USER WRITES IN ONE TEXT BOX, IT CHANGES ALL THE BOXES TO SAY THE SAME THING
 // - REVISE SCOPE AND DATA ATTRIBUTES 
 
 //DISPLAY CURRENT DATE
 $("#currentDay").text(moment().format('ddd MMM Do, YYYY HH:mm'));
 
-//FUNCTION FOR WHEN USER CLICKS SAVE BUTTON 
-$('.saveBtn').on('click', function () {
-    let textareaValue = $('.textarea').val();
-    localStorage.setItem('textareaValue', textareaValue);
-});
+//FUNCTION FOR WHEN USER CLICKS SAVE BUTTON - SAVE USER INPUT TO LOCAL STORAGE 
 
-$(document).ready(function () {
-    let storedValue = localStorage.getItem("textareaValue");
-    $("textarea").val(storedValue);
-});
+$(document).ready(function() {
+    $(".saveBtn").click(function() {
+      let text = $(this).closest('.row').find('.textarea').val();
+      let rowId = $(this).closest('.row').attr('id');
+      localStorage.setItem(rowId, text);
+    });
+  });
+
+  $(document).ready(function() {
+    $(".row").each(function() {
+      let rowId = $(this).attr('id');
+      let storedText = localStorage.getItem(rowId);
+      if (storedText) {
+        $(this).find('.textarea').val(storedText);
+      }
+    });
+  });
+  
+  
 
 //GET CURRENT TIME
 let timeNow = moment().hour();
@@ -31,27 +41,20 @@ $(document).ready(function () {
         console.log(rowValues);
         if (rowValues < timeNow) {
             console.log("in the past");
-            //$('textarea').removeClass("future");
-            //$('textarea').removeClass("present");
-            //$('textarea').addClass("past");
             $(rows[i]).find("textarea").addClass("past");
         }
         else if (rowValues == timeNow) {
             console.log("in the present");
-            //$('textarea').removeClass("past");
-            //$('textarea').removeClass("future");
-            //$('textarea').addClass("present");
             $(rows[i]).find("textarea").addClass("present");
         }
         else {
             console.log("in the future");
-            //$('textarea').removeClass("present");
-            //$('textarea').removeClass("past");
-            //$('textarea').addClass("future");
             $(rows[i]).find("textarea").addClass("future");
         }
     }
 });
+
+ 
 
 //PSEUDOCODE:
 // when you type text in the middle column, the value of that text needs to be saved to local storage
