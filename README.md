@@ -24,7 +24,7 @@ The app should:
  
 * Color-code each timeblock based on past, present, and future when the timeblock is viewed.
  
-* Allow a user to enter an event when they click a timeblock
+* Allow a user to enter an event when they click a timeblock.
 
 * Save the event in local storage when the save button is clicked in that timeblock.
 

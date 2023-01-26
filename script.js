@@ -1,12 +1,33 @@
-//CURRENT BUGS:
-// - WHEN USER WRITES IN ONE TEXT BOX, IT CHANGES ALL THE BOXES TO SAY THE SAME THING
-// - REVISE SCOPE AND DATA ATTRIBUTES 
-
-//DISPLAY CURRENT DATE
+//DISPLAY CURRENT DATE USING MOMENT 
 $("#currentDay").text(moment().format('ddd MMM Do, YYYY HH:mm'));
 
-//FUNCTION FOR WHEN USER CLICKS SAVE BUTTON - SAVE USER INPUT TO LOCAL STORAGE 
+//GET CURRENT TIME
+let timeNow = moment().hour();
+console.log(timeNow);
 
+//FUNCTION TO GIVE EACH ROW A VALUE, COMPARE VALUE WITH CURRENT TIME, ADD OR REMOVE CSS CLASSES ACCORDINGLY  
+$(document).ready(function () {
+  let rows = $(".row");
+  for (let i = 0; i < rows.length; i++) {
+      $(rows[i]).val(i + 9);
+      let rowValues = $(rows[i]).val();
+      console.log(rowValues);
+      if (rowValues < timeNow) {
+          console.log("in the past");
+          $(rows[i]).find("textarea").addClass("past");
+      }
+      else if (rowValues == timeNow) {
+          console.log("in the present");
+          $(rows[i]).find("textarea").addClass("present");
+      }
+      else {
+          console.log("in the future");
+          $(rows[i]).find("textarea").addClass("future");
+      }
+  }
+});
+
+//FUNCTION FOR WHEN USER CLICKS SAVE BUTTON - SAVE USER INPUT TO LOCAL STORAGE 
 $(document).ready(function() {
     $(".saveBtn").click(function() {
       let text = $(this).closest('.row').find('.textarea').val();
@@ -15,6 +36,7 @@ $(document).ready(function() {
     });
   });
 
+  //selects all elements with the class "row". for each one, it gets the 'id' attribute, uses that to retrieve a value from the browser's local storage, and if it exists, it sets the value of the textarea within that row to the stored value.
   $(document).ready(function() {
     $(".row").each(function() {
       let rowId = $(this).attr('id');
@@ -24,37 +46,6 @@ $(document).ready(function() {
       }
     });
   });
-  
-  
-
-//GET CURRENT TIME
-let timeNow = moment().hour();
-console.log(timeNow);
-
-//FUNCTION TO GIVE EACH ROW A VALUE, COMPARE VALUE WITH CURRENT TIME, ADD OR REMOVE CSS CLASSES ACCORDINGLY  
-
-$(document).ready(function () {
-    let rows = $(".row");
-    for (let i = 0; i < rows.length; i++) {
-        $(rows[i]).val(i + 9);
-        let rowValues = $(rows[i]).val();
-        console.log(rowValues);
-        if (rowValues < timeNow) {
-            console.log("in the past");
-            $(rows[i]).find("textarea").addClass("past");
-        }
-        else if (rowValues == timeNow) {
-            console.log("in the present");
-            $(rows[i]).find("textarea").addClass("present");
-        }
-        else {
-            console.log("in the future");
-            $(rows[i]).find("textarea").addClass("future");
-        }
-    }
-});
-
- 
 
 //PSEUDOCODE:
 // when you type text in the middle column, the value of that text needs to be saved to local storage
