@@ -10,7 +10,7 @@ N/A
 
 ## Usage
 
-Link to deployed application: 
+Link to deployed application: https://lily1595.github.io/Workday-Calender/ 
 
 Please type into your desired text box and click save to store your input! 
 
